@@ -7,7 +7,7 @@ module.exports = {
       host: 'localhost',
       user: 'root',
       password: '',
-      database: 'libraryManager'
+      database: 'librarymanager'
     },
     migrations: {
       directory: path.resolve(

@@ -1,5 +1,5 @@
 const {Router} = require("express")
-const bookRoutes = require("../book.routes")
+const bookRoutes = require("./book.routes")
 const userRoutes = require("./users.routes")
 const routes = Router()
 

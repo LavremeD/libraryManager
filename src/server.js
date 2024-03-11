@@ -1,9 +1,11 @@
-const express = require('express');
-const { v4: uuidV4 } = require('uuid');
+/*
+const express = require('express')
+const routes = require("./routes")
  
 const app = express();
 app.use(express.json());
- 
+app.use(routes);
+
 let livros = [];
 let usuarios = [];
  
@@ -120,7 +122,16 @@ if(categoria){
 }
 return res.status(200).json(result)
 })
+ */
+const express = require("express")
 
+const routes = require("./routes")
+
+const app = express();
+
+app.use(express.json())
+
+app.use(routes);
 
 
 

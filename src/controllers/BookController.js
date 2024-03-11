@@ -1,4 +1,4 @@
-const knex = require("../database/knex")
+const knex = require("../database/knex/migrations")
 class BookController{
   
     async createBook(req, res) {
@@ -36,7 +36,7 @@ class BookController{
         await knex("book").where({id}).update({titulo, autor})
         return res.status(200).json("Registro atualizado com sucesso!")
     }
-    async updateBooktatus(req, res){
+    async updateBookStatus(req, res){
         const {id} = req.params
 
         await knex("book").where({id}).update({disponibilidade: true})

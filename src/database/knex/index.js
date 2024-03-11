@@ -1,21 +1,7 @@
-const mysql = require("mysql2")
+const config = require("../../../knexfile")
 
-const pool = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "bookmanager"
-}).promise()
+const knex = require("knex")
 
-async function Connection() {
-    await pool.connect ((err) => {
-        if(err){
-            throw err
-        }
-        console.log("MySql connected")
-    
-    })
-    pool.destroy()
-}
+const connection = knex(config.development)
 
-module.exports = {Connection, pool}
+module.exports = connection
