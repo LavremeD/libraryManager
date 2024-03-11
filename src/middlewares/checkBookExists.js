@@ -1,4 +1,4 @@
-const knex = require("../database/knex/migrations");
+const knex = require("../database/knex");
 
 async function checkBookExists(req, res, next){
     const {id} = req.params
