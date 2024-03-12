@@ -4,8 +4,10 @@ exports.up = (knex) => {
         table.string("name").notNullable();
         table.string("email").notNullable();
         table.string("fone").notNullable();
-        table.string("password").notNullable();
-        table.boolean("isAdmin").defaultTo("false")
+        table.boolean("isAdmin").defaultTo('false');
+        
+        table.timestamp("created_at").defaultTo(knex.fn.now());
+        table.timestamp("updated_at").defaultTo(knex.fn.now());
     })
 };
 exports.down = (knex) => {

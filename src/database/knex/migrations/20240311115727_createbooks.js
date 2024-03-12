@@ -4,10 +4,12 @@ exports.up = (knex) => {
         table.string("title").notNullable();
         table.string("author").notNullable();
         table.string("category").notNullable();
-        table.boolean("availability").defaultTo("true");
+        table.integer("pages").notNullable();
+        table.boolean("availability").defaultTo('true');
+        
         table.timestamp("created_at").defaultTo(knex.fn.now());
         table.timestamp("updated_at").defaultTo(knex.fn.now());
-        table.boolean("user_id").defaultTo("false")
+        
     })
 };
 exports.down = (knex) => {
