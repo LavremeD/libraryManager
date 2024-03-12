@@ -3,11 +3,11 @@ const knex = require("../database/knex")
 class UserController{
   
     async createUser(req, res) {
-        const{name, email, password} = req.body
+        const{name, email, fone} = req.body
         
-        const isAdmin = false
+        
 
-        await knex("users").insert({ name, email, password, isAdmin })
+        await knex("users").insert({ name, email, fone})
 
        
         res.status(201).json("usuario cadastrado com sucesso!")
@@ -38,7 +38,7 @@ class UserController{
 
     async updateUserStatus(req, res){
         const {user_id} = req.params
-        await knex("users").where({id: user_id}).update({isAdmin: true})
+        await knex("users").where({id: user_id}).update()
         
         return res.status(200).json("Status alterado com sucesso!")
     }

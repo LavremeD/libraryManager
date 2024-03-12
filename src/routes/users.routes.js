@@ -4,14 +4,14 @@ const checkUserExist = require("../middlewares/checkUserExist")
 const userRoutes = Router()
 const userController = new UserController()
 
-userRoutes.post("/users", userController.createUser)
+userRoutes.post("/", userController.createUser)
 
-userRoutes.get("/users", userController.listUsers)
-userRoutes.get("/users/:user_id", checkUserExist, userController.listUserById)
+userRoutes.get("/", userController.listUsers)
+userRoutes.get("/:user_id", checkUserExist, userController.listUserById)
 
-userRoutes.put("/users/:user_id", checkUserExist, userController.updateUser)
-userRoutes.patch("/users/status/:user_id", checkUserExist, userController.updateUserStatus)
+userRoutes.put("/:user_id", checkUserExist, userController.updateUser)
+userRoutes.patch("/status/:user_id", checkUserExist, userController.updateUserStatus)
 
-userRoutes.delete("/users/:user_id",checkUserExist, userController.deleteUser)
+userRoutes.delete("/:user_id",checkUserExist, userController.deleteUser)
 
 module.exports = userRoutes
