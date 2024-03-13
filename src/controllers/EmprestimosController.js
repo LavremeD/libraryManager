@@ -11,7 +11,7 @@ class EmprestimosController{
             return res.status(400).json("Usuário não encontrado! ")
         }
         await knex("emprestimos").insert({user_id, book_id})
-        await knex("Books").where({book_id}).update({availability: false})
+        await knex("books").where({id: book_id}).update({availability: false})
 
         return res.status(200).json("Emprestimo realizado com sucesso!")
 
@@ -19,7 +19,7 @@ class EmprestimosController{
 async listBorrowedBooks(req, res){
     const {user_id} = req.params
 
-    const emprestimos = await knex("emprestimos").where({user_id}).innerJoin('books', 'books.id', 'imprestimos.books_id').select('books.title', 'books.author', 'books.pages')
+    const emprestimos = await knex("emprestimos").where({user_id}).innerJoin('books', 'books.id', 'emprestimos.book_id').select('books.title', 'books.author', 'books.pages')
 
     return res.status(200).json(emprestimos)
     
@@ -31,7 +31,7 @@ async totalBorrowedBooks(req, res){
      return res.status(200).json(total)
 
 }
-async returnBorrowBooks(req, rea){
+async returnBorrowBooks(req, res){
     const{user_id, book_id} = req.params
     const book = await knex("books").where({id: book_id}).first()
     const user = await knex("users").where({id: user_id}).first()
